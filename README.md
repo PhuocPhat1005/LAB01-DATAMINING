@@ -20,9 +20,87 @@ Nhóm số 5 gồm có 3 thành viên sau đây thực hiện bài tập thực 
 
 ## II. DATASETS
 
-### 1. [Tiền xử lý dữ liệu hình ảnh] ĐIỀN TÊN BỘ DATASET
+### 1. [Tiền xử lý dữ liệu hình ảnh] Chest X-Ray Images (Pneumonia)
 
-Điền thông tin ở đây ... (điền mô tả chi tiết về bộ dữ liệu ở đây ...)
+#### 1.1. Giới thiệu chung
+
+Bộ dữ liệu [**Chest X-Ray Images (Pneumonia)**](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia/data) là tập ảnh X-quang ngực (anterior–posterior) được thu thập từ **Guangzhou Women and Children’s Medical Center**, Trung Quốc.
+Tập dữ liệu được sử dụng rộng rãi trong các nghiên cứu về **phân loại bệnh viêm phổi (Pneumonia) và phổi bình thường (Normal)**, và hiện có sẵn trên Kaggle, Mendeley Data, cùng được mô tả chi tiết trong bài báo khoa học *Kermany et al., “Identifying Medical Diagnoses and Treatable Diseases by Image-Based Deep Learning”, Cell, 2018.*
+
+Hình minh họa (Figure S6) cho thấy:
+
+- Ảnh **Normal** (bên trái): phổi trong, không có vùng mờ bất thường.
+- Ảnh **Bacterial Pneumonia** (giữa): thể hiện vùng tổn thương đặc trưng dạng đặc thù thùy (lobar consolidation) — ví dụ ở thùy trên phổi phải.
+- Ảnh **Viral Pneumonia** (phải): biểu hiện dạng mờ lan tỏa (interstitial pattern) ở cả hai phổi.
+*(Nguồn: [Cell, 2018](http://www.cell.com/cell/fulltext/S0092-8674(18)30154-5))*
+
+#### 1.2. Cấu trúc và nội dung dữ liệu
+
+Bộ dữ liệu bao gồm **5,863 ảnh X-quang (JPEG)**, được chia thành ba tập riêng biệt:
+
+- **train/** — tập huấn luyện
+- **val/** — tập kiểm định
+- **test/** — tập kiểm tra
+
+Mỗi tập con đều có hai thư mục chính:
+
+- `NORMAL/` – ảnh X-quang phổi bình thường
+- `PNEUMONIA/` – ảnh X-quang có dấu hiệu viêm phổi (bacterial hoặc viral)
+
+Cấu trúc thư mục:
+
+```bash
+tree chest_xray -L 2
+chest_xray
+├── chest_xray
+│   ├── test
+│   ├── train
+│   └── val
+├── test
+│   ├── NORMAL
+│   └── PNEUMONIA
+├── train
+│   ├── NORMAL
+│   └── PNEUMONIA
+└── val
+    ├── NORMAL
+    └── PNEUMONIA
+```
+
+#### 2.3. Quy trình thu thập và xử lý dữ liệu
+
+- Ảnh X-quang được thu thập từ các bệnh nhi (1–5 tuổi) trong quá trình chăm sóc lâm sàng thông thường.
+- Mọi ảnh đều được **sàng lọc chất lượng (quality control)** để loại bỏ ảnh mờ, thiếu sáng hoặc không đọc được.
+- Các chẩn đoán được **đánh giá độc lập bởi hai bác sĩ chuyên khoa**, sau đó được xác nhận lại bởi một bác sĩ thứ ba để đảm bảo độ chính xác cao nhất.
+- Các ảnh được lưu ở định dạng JPEG, kích thước không đồng nhất, độ phân giải trung bình cao (thường từ 1000×1000 trở lên).
+
+#### 2.4. Ưu điểm và nhược điểm
+
+##### Ưu điểm
+
+- Là bộ dữ liệu **chuẩn y khoa công khai** có nguồn gốc xác thực và quy trình gán nhãn chặt chẽ.
+- Cân bằng hợp lý giữa hai lớp, giúp huấn luyện và đánh giá mô hình dễ dàng.
+- Có độ phân giải cao, thuận lợi cho các kỹ thuật xử lý ảnh nâng cao (enhancement, segmentation).
+- Được sử dụng trong nhiều nghiên cứu Deep Learning nổi bật — giúp dễ so sánh kết quả.
+
+##### Nhược điểm
+
+- Ảnh chỉ bao gồm trẻ nhỏ (1–5 tuổi), do đó mô hình huấn luyện từ tập này có thể **chưa tổng quát cho người lớn**.
+- Một số ảnh có **biến thiên ánh sáng, nhiễu, hoặc sai lệch tư thế** khiến cần xử lý cẩn thận (resizing, normalization).
+- Không cung cấp thông tin lâm sàng chi tiết (tuổi, giới tính, triệu chứng), nên chỉ dùng cho bài toán thị giác.
+
+#### 2.5. Giấy phép và trích dẫn
+
+- **Nguồn dữ liệu:** [Mendeley Data – rscbjbr9sj/2](https://data.mendeley.com/datasets/rscbjbr9sj/2)
+- **License:** CC BY 4.0 (Creative Commons Attribution 4.0)
+- **Trích dẫn:**
+  Kermany, D. S., et al. *Identifying Medical Diagnoses and Treatable Diseases by Image-Based Deep Learning.*
+  *Cell*, 172(5), 1122–1131.e9, 2018. [https://doi.org/10.1016/j.cell.2018.02.010](https://doi.org/10.1016/j.cell.2018.02.010)
+
+#### 2.6. Tổng kết
+
+Bộ dữ liệu **Chest X-Ray Images (Pneumonia)** là nguồn dữ liệu y học công khai, chất lượng cao, phù hợp cho các nghiên cứu xử lý ảnh và học sâu trong chẩn đoán bệnh phổi.
+Quy trình tiền xử lý (resizing, grayscale, normalization, enhancement, edge detection) trong phần sau sẽ giúp chuẩn hoá và nâng cao chất lượng dữ liệu, tạo nền tảng cho các mô hình khai phá và phân tích tự động.
 
 ### 2. [Tiền xử lý dữ liệu dạng bảng] ĐIỀN TÊN BỘ DATASET
 
@@ -76,7 +154,7 @@ Group_05/
 ├── data/                               # Thư mục dùng để chứa các bộ dữ liệu
 │   ├── images/                         # Thư mục chứa các dữ liệu dạng hình ảnh
 │   ├── tabular/                        # Thư mục chứa các dữ liệu dạng bảng
-│   │   └── cities15000.csv     
+│   │   └── cities15000.csv
 │   └── text/                           # Thư mục chứa các dữ liệu dạng văn bản
 │       ├── twitter15/
 │       │   ├── label.txt
