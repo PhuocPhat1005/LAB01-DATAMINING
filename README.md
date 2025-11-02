@@ -67,6 +67,50 @@ chest_xray
     └── PNEUMONIA
 ```
 
+##### Cài đặt dữ liệu từ Kaggle
+
+```bash
+cd data/images
+```
+
+- **Với Kaggle CLI**
+
+```bash
+#!/bin/bash
+kaggle datasets download paultimothymooney/chest-xray-pneumonia
+```
+
+- **Với lệnh curl**
+
+```bash
+#!/bin/bash
+curl -L -o ~/Downloads/chest-xray-pneumonia.zip\
+  https://www.kaggle.com/api/v1/datasets/download/paultimothymooney/chest-xray-pneumonia
+```
+
+Hoặc có thể tải file zip trực tiếp từ Kaggle đến thư mục `data/images`
+
+##### Cấu trúc sau khi cài đặt dataset
+
+```bash
+ tree images -L3
+images
+└── chest_xray
+    ├── chest_xray
+    │   ├── test
+    │   ├── train
+    │   └── val
+    ├── test
+    │   ├── NORMAL
+    │   └── PNEUMONIA
+    ├── train
+    │   ├── NORMAL
+    │   └── PNEUMONIA
+    └── val
+        ├── NORMAL
+        └── PNEUMONIA
+```
+
 #### 2.3. Quy trình thu thập và xử lý dữ liệu
 
 - Ảnh X-quang được thu thập từ các bệnh nhi (1–5 tuổi) trong quá trình chăm sóc lâm sàng thông thường.
