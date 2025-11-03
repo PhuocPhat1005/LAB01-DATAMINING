@@ -123,7 +123,7 @@ python3 -m venv venv
 Sau đó, bạn cần phải kích hoạt môi trường ảo bằng command sau đây:
 
 ```bash
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 Tiếp theo, bạn cần check xem mình đã vào đúng thư mục `Group_05` chưa. Nếu chưa bạn cần chạy lệnh sau để vào đúng thư mục gốc và cài đặt thư viện cho môi trường ảo bằng command sau đây:

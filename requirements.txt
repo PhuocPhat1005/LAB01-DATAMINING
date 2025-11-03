@@ -10,3 +10,13 @@ tqdm
 plotly
 opencv-python
 pillow
+gensim
+wordcloud
+sentencepiece
+sacremoses
+lxml
+spacy
+beautifulsoup4
+contractions
+autocorrect
+emoji
