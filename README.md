@@ -14,7 +14,7 @@ Nhóm số 5 gồm có 3 thành viên sau đây thực hiện bài tập thực 
 
 |   MSSV   |     Họ và Tên      | Công việc                    | Mức độ hoàn thành |
 |:--------:|:------------------:| ---------------------------- |:-----------------:|
-| 22127322 |   Lê Phước Phát    | Tiền xử lý dữ liệu dạng bảng |       100%        |
+| 22127322 |   Lê Phước Phát    | Tiền xử lý dữ liệu văn bản   |       100%        |
 | 23127187 |  Trần Lý Nhật Hào  | Tiền xử lý dữ liệu hình ảnh  |       100%        |
 | 23127384 | Huỳnh Lê Duy Khánh | Tiền xử lý dữ liệu dạng bảng |       100%        |
 
